@@ -1,0 +1,105 @@
+package pageobjectmodel;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+public class pomlogin {
+WebDriver driver;
+//constructor
+pomlogin(WebDriver driver){
+this.driver = driver;
+}
+//locator
+By signUp=By.id("signin2");
+By username=By.id("sign-username")
+By password=By.id("sign-password");
+Bycreate=By.xpath("//*[@id='signInModal']/div/div/div[3]/button[2]");
+//Login
+By log=By.id("login2");
+By First=By.id("loginusername").
+By Second=By.id("loginpassword");
+ByLogin=By.xpath("//*[@id=\"logInModal\"]/div/div/div[3]/button[2]");
+//product
+By product=By.linkText("Samsung galaxy s6");
+By cart=By.linkText("Add to cart");
+//action methods
+}
+public void signup(){
+driver.findElement(signUp).click();
+}
+public void user(String uname) {
+driver.findElement(username).sendkeys(uname);
+}
+public void pass(string pword) {
+driver.findelement(password).sendKeys(pword);
+}
+public void clickcreate(){
+driver.findelement(create)click();
+}
+//Login
+public void clicklogin( ){
+driver.findElement(log).click();
+}
+public void userName(String firstname ){
+driver.findElement(First) sendkeys(firstname);
+}
+public void password(string passname){
+driver.findElement(Second).sendkeys(passname);
+}
+public void clickLoGin(){
+driver.findElement(Login).click();
+}
+//Select a product
+public void Product() {
+driver.findElement(product).click();
+}
+//Add to cart
+Public void Cart(){
+driver.findElement(cart).click();
+}
+}
+-------------------------------------------------------------------------------------------------------------
+WE HAVE TO RUN THIS FILE NAMED "loginpom"
+
+package pageobjectmodel;
+import java.util.concurrent.Timeunit;
+import org.openqa. selenium.webDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Beforeclass;
+import org.testng.annotations.Test;
+public class loginpom {
+WebDriver driver;
+// here we have to create the annotations
+@BeforeClass
+public void beforeclass() {
+System.setproperty("webdriver.chrome.driver"
+"C:\\Users\\athira.pa4\\Downloads\\ChromeDriver131\\ChromeDriver131\\chromedriver.exe");
+driver = new ChromeDriver().
+driver.manage().timeouts().implicitlywait(10, Timeunit.SECONDS);
+driver.get("https://www.demoblaze.com/");
+driver.manage().window().maximize();
+}
+@Test
+public void test() {
+pomlogin pl=new pomlogin(driver);
+
+//sign up
+pl.signup();
+p1.user("Alan@123");
+pl.pass("admin@123");
+pl.clickcreate();
+
+//login
+pl.clicklogin();
+pl.userName("Alan@123");
+pl.passWord("admin@123");
+pl.clickLOGin();
+
+//Product 
+pl.Product();
+pl.Cart();
+}
+@AfterClass
+public void.after(){
+driver.close();
+}
+}
