@@ -1,0 +1,64 @@
+package NewProject;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium. chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Beforeclass;
+import org.testng.annotations.Test;
+
+public class DemoBlaze {
+
+webDriver driver;
+// here we have to create the annotations
+@BeforeClass
+public void beforeclass(){
+System.setproperty("webdriver.chrome.driver","C:\\Users\\athira.p04\\Downloads\\ChromeDriver131\\ChromeDriver131\\chromedriver.exe");
+driver = new ChromeDriver();
+driver.manage().timeouts().implicitlywait(10, Timeunit.SECONDS);
+driver.get("https://www.demoblaze.com/");
+driver.manage().window().maximize();
+}
+
+@Test
+public void test(){
+//sign up
+driver.findElement(By.id("signin2")).click();
+driver.findElement(By.id("sign-username")).sendKeys("Alan@123");
+driver.findElement(By.id("sign-password")).sendKeys("admin@123"):
+driver;findElement(By.xpath("//*[@id=`signInModai']/div/div/divf3]/button[2]")).click();
+//login
+driver.findElement(By.id("login2")).click();
+driver.findElement(By.id("loginusername")).sendKeys("Alan@123");
+driver.findElement(By.id("loginpassword")).sendKeys("admin@123")
+driver.findElement(By.xpath("//*[@id=\\\"logInModal\\\"]/div/div/div[3]/button[2]")).click();
+//product
+driver.findElement(By.1inkText("Samsung galaxy s6")).click();
+driver.findElement(By.linkText("Add to cart")).click()
+//message
+driver.switchTo().alert().getText();
+driver.switchTo().alert().accept();
+driver.findElement(By.id("cartur")).click();
+//verify the price is displayed correctly for the product WebElement actual=driver.findElement(By.id("totalp"));System.out.println(actual);
+Assert.assertEquals(actual,"360");
+driver.findElement(By.linkText("Place Order")).click();
+driver.findElement(By.id("name")).sendKeys("ABC");
+driver.findElement(By.id("country")).sendkeys("India");
+driver.findElement(By.id("city")).sendKeys("mysore");
+driver.findElement(By.id("card")).sendkeys("12345678910");
+driver.findElement(By.id("month")).sendkeys("January");driver.findElement(By.id("year")).sendkeys("2000");
+driver.findElement(By.linkText("Purchase")).click();
+WebElement message=driver.findElement(By.xpath("/html/body/div[18]/h2"));
+System.out.println(message);
+Assert.assertEquals(message,"Thank you for your purchase!");
+driver. findElement(By.xpath("/htm1/body/div[18]/div[7]/div/button")).click();
+driver.findElement(By.id("1ogout2")).click();
+}
+@AfterClass
+public void tearDown(){
+driver.close();
+}
+
+
